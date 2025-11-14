@@ -1,65 +1,60 @@
 🛡️ Sentinel de Rede
+Monitoramento simples, rápido e visual da sua rede local.
+🚀 O que é isso?
 
-Um painel simples em Python para monitorar dispositivos da rede local, mostrando IP, host e latência em tempo real através de uma interface web.
+Um painel que monitora os dispositivos da sua rede em tempo real:
 
-📌 Sobre o projeto
+🔍 vê quem está conectado
 
-O sistema:
+📡 mede a latência (ping)
 
-Escaneia a rede local
+🖥️ mostra tudo num gráfico dinâmico
 
-Mede a latência (ping) de cada dispositivo
+🔄 atualiza automaticamente a cada poucos segundos
 
-Exibe tudo em uma página HTML
+Feito para ser leve, direto e didático — perfeito pra demonstrar conceitos básicos de redes na prática.
 
-Atualiza automaticamente a cada 5 segundos
+🎯 Por que existe?
 
-Mostra um gráfico de latência usando Chart.js
+Pra transformar um assunto chato (monitoramento de rede) em algo visual, interativo e com cara de ferramenta profissional — mesmo sendo simples.
 
-É um projeto escolar feito para demonstrar monitoramento básico de rede.
+🛠️ Tecnologias que fazem a mágica
 
-📂 Estrutura
-Sentinel_de_rede/
-│
-├── app.py
-├── devices.py
-├── requirements.txt
-│
-├── templates/
-│   └── index.html
-│
-└── static/
-    └── style.css
+🐍 Python
 
-🚀 Como rodar
-1. Clonar o repositório
-git clone https://github.com/Lz-acc/Sentinel_de_rede.git
-cd Sentinel_de_rede
+🌐 Flask
 
-2. Criar e ativar ambiente
+🎨 HTML + CSS
 
-Windows:
+📊 Chart.js
 
-python -m venv .venv
-.venv\Scripts\activate
+Simples, porém eficiente.
 
-3. Instalar dependências
-pip install -r requirements.txt
+▶️ Como rodar
 
-4. Executar
-python app.py
+Ative seu ambiente virtual
 
+Instale as dependências
 
-Acessar no navegador:
+Rode o servidor
+
+Abra no navegador:
 
 http://localhost:5000
 
-✔ Tecnologias usadas
 
-Python
+E pronto — o painel aparece funcionando.
 
-Flask
+🌱 Ideias futuras
 
-HTML + CSS
+Histórico de latência
 
-Chart.js
+Alertas quando um dispositivo cair
+
+Dashboard mais completo
+
+WebSockets para atualização instantânea
+
+✨ Autor
+
+Feito por Lorenzo, pensando em simplicidade, clareza e impacto visual.
