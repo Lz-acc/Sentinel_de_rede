@@ -29,13 +29,13 @@ Perfeito para trabalhos escolares, estudos ou demonstrações de redes.
 
 ---
 
+## 📄 Licença
+Este projeto está licenciado sob a **MIT License**.  
+Veja o arquivo `LICENSE` para mais detalhes.
+
 ## ▶️ Como executar
 
 Instale as dependências:
 
 ```bash
 pip install flask pythonping
-
-## 📄 Licença
-Este projeto está licenciado sob a **MIT License**.  
-Veja o arquivo `LICENSE` para mais detalhes.
