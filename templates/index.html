@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Painel de Rede</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Painel de Rede Escolar</h1>
+        <p class="subtitle">Monitoramento simples de latência — atualiza a cada 5s</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <div class="chart-wrap">
+                <canvas id="latenciaChart"></canvas>
+            </div>
+            <div class="info-row">
+                <div>
+                    <label style="font-size:0.95rem"><input type="checkbox" id="showOffline" checked> Mostrar offline</label>
+                </div>
+                <div>
+                    <span id="lastUpdate">Última atualização: —</span>
+                    <span id="statusMsg" class="status"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Dispositivos</h2>
+            <table id="devicesTable">
+                <thead>
+                    <tr><th>IP</th><th>Status</th><th>Host</th><th>Latência (ms)</th><th>Hora</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        let chart;
+
+        function safeValue(v) {
+            return (v === null || v === undefined) ? NaN : v;
+        }
+
+        function formatLatency(v) {
+            return (v === null || v === undefined) ? '—' : v.toFixed ? v.toFixed(1) : v;
+        }
+
+        async function atualizar() {
+            const statusEl = document.getElementById('statusMsg');
+            try {
+                const res = await fetch('/status', {cache: 'no-store'});
+                if (!res.ok) throw new Error('Resposta ' + res.status);
+                const data = await res.json();
+
+                const labels = data.map(d => d.ip);
+                const valores = data.map(d => safeValue(d.latencia));
+
+                // Atualiza tabela
+                const tbody = document.querySelector('#devicesTable tbody');
+                tbody.innerHTML = '';
+                data.forEach(d => {
+                    const tr = document.createElement('tr');
+                    tr.dataset.online = d.online ? 'true' : 'false';
+                    const statusDot = `<span class="status-dot ${d.online ? 'online' : 'offline'}" title="${d.online ? 'Online' : 'Offline'}"></span>`;
+                    tr.innerHTML = `<td>${d.ip}</td><td>${statusDot}</td><td>${d.host || '—'}</td><td>${formatLatency(d.latencia)}</td><td>${d.hora || '—'}</td>`;
+                    tbody.appendChild(tr);
+                });
+
+                // aplica filtro mostrar/ocultar offline
+                applyOfflineFilter();
+
+                // Atualiza gráfico
+                const ctx = document.getElementById('latenciaChart').getContext('2d');
+                if (!chart) {
+                    chart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Latência (ms)',
+                                data: valores,
+                                backgroundColor: labels.map((_,i) => `rgba(54, 162, 235, ${0.6 - (i*0.05)})`),
+                                borderColor: 'rgba(255,255,255,0.06)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: { beginAtZero: true }
+                            },
+                            plugins: { legend: { display: false } }
+                        }
+                    });
+                } else {
+                    chart.data.labels = labels;
+                    chart.data.datasets[0].data = valores;
+                    chart.update();
+                }
+
+                document.getElementById('lastUpdate').textContent = 'Última atualização: ' + new Date().toLocaleTimeString();
+                statusEl.textContent = '';
+                statusEl.classList.remove('error');
+            } catch (err) {
+                statusEl.textContent = 'Erro ao atualizar: ' + err.message;
+                statusEl.classList.add('error');
+            }
+        }
+
+        atualizar();
+        setInterval(atualizar, 5000);
+        // Filtro para mostrar/ocultar offline
+        function applyOfflineFilter() {
+            const showOffline = document.getElementById('showOffline').checked;
+            document.querySelectorAll('#devicesTable tbody tr').forEach(tr => {
+                if (tr.dataset.online === 'false' && !showOffline) tr.style.display = 'none';
+                else tr.style.display = '';
+            });
+        }
+
+        document.getElementById('showOffline').addEventListener('change', applyOfflineFilter);
+    </script>
+</body>
+</html>
