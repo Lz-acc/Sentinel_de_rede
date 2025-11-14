@@ -1,60 +1,37 @@
-🛡️ Sentinel de Rede
-Monitoramento simples, rápido e visual da sua rede local.
-🚀 O que é isso?
+# 🛡️ Sentinel de Rede
+Monitoramento simples, visual e em tempo real da sua rede local.
 
-Um painel que monitora os dispositivos da sua rede em tempo real:
+---
 
-🔍 vê quem está conectado
+## 🚀 Visão Geral
 
-📡 mede a latência (ping)
+O **Sentinel de Rede** é um painel web criado para monitorar os dispositivos conectados à sua rede local.  
+Ele mostra:
 
-🖥️ mostra tudo num gráfico dinâmico
+- 🔍 **Dispositivos online**
+- 📡 **Latência (ping) de cada dispositivo**
+- 🧠 **Identificação por IP e hostname**
+- 📊 **Gráfico dinâmico atualizado automaticamente**
 
-🔄 atualiza automaticamente a cada poucos segundos
+Tudo isso numa interface leve, rápida e direta ao ponto.
 
-Feito para ser leve, direto e didático — perfeito pra demonstrar conceitos básicos de redes na prática.
+---
 
-🎯 Por que existe?
+## ✨ Por que esse projeto é massa
 
-Pra transformar um assunto chato (monitoramento de rede) em algo visual, interativo e com cara de ferramenta profissional — mesmo sendo simples.
+- Interface simples e intuitiva  
+- Atualização automática sem esforço  
+- Fácil de rodar e demonstrar  
+- Zero complicação na instalação  
+- Visual moderno com gráfico em tempo real  
 
-🛠️ Tecnologias que fazem a mágica
+Perfeito para trabalhos escolares, estudos ou demonstrações de redes.
 
-🐍 Python
+---
 
-🌐 Flask
+## ▶️ Como executar
 
-🎨 HTML + CSS
+Instale as dependências:
 
-📊 Chart.js
-
-Simples, porém eficiente.
-
-▶️ Como rodar
-
-Ative seu ambiente virtual
-
-Instale as dependências
-
-Rode o servidor
-
-Abra no navegador:
-
-http://localhost:5000
-
-
-E pronto — o painel aparece funcionando.
-
-🌱 Ideias futuras
-
-Histórico de latência
-
-Alertas quando um dispositivo cair
-
-Dashboard mais completo
-
-WebSockets para atualização instantânea
-
-✨ Autor
-
-Feito por Lorenzo, pensando em simplicidade, clareza e impacto visual.
+```bash
+pip install flask pythonping
