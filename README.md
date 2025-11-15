@@ -1,41 +1,58 @@
-# 🛡️ Sentinel de Rede
-Monitoramento simples, visual e em tempo real da sua rede local.
+# Network Sentinel
+
+**Real-time School Network Monitoring Dashboard**
 
 ---
 
-## 🚀 Visão Geral
-
-O **Sentinel de Rede** é um painel web criado para monitorar os dispositivos conectados à sua rede local.  
-Ele mostra:
-
-- 🔍 **Dispositivos online**
-- 📡 **Latência (ping) de cada dispositivo**
-- 🧠 **Identificação por IP e hostname**
-- 📊 **Gráfico dinâmico atualizado automaticamente**
-
-Tudo isso numa interface leve, rápida e direta ao ponto.
+## Overview
+Network Sentinel is a Python and Flask-based application designed to monitor devices on a local network in real time. It provides latency information, online/offline status, and host details, updating automatically every few seconds.
 
 ---
 
-## ✨ Por que esse projeto é massa
-
-- Interface simples e intuitiva  
-- Atualização automática sem esforço  
-- Fácil de rodar e demonstrar  
-- Zero complicação na instalação  
-- Visual moderno com gráfico em tempo real  
-
-Perfeito para trabalhos escolares, estudos ou demonstrações de redes.
+## Features
+- Discover devices on the local network automatically
+- Ping-based latency measurement
+- Online/offline status for each device
+- Device hostname detection
+- Web dashboard with live charts and tables
+- Filters to show or hide offline devices
+- Automatic updates every 5 seconds
 
 ---
 
-## 📄 Licença
-Este projeto está licenciado sob a **MIT License**.  
-Veja o arquivo `LICENSE` para mais detalhes.
+## Technologies Used
+- Python 3.11+
+- Flask (web framework)
+- Pythonping (latency monitoring)
+- Scapy (optional, for advanced ARP scanning)
+- JavaScript & Chart.js (frontend charts)
+- HTML & CSS (dashboard UI)
 
-## ▶️ Como executar
+---
 
-Instale as dependências:
-
+## Installation & Usage
+1. Clone the repository:
 ```bash
-pip install flask pythonping
+git clone https://github.com/Lz-acc/Sentinel_de_rede.git
+Navigate to the project folder:
+
+bash
+Copiar código
+cd Sentinel_de_cripto
+Install dependencies:
+
+bash
+Copiar código
+pip install -r requirements.txt
+Run the Flask app:
+
+bash
+Copiar código
+python app.py
+Open your browser and go to http://127.0.0.1:5000 to access the dashboard.
+
+Contributing
+Contributions are welcome! Feel free to submit issues or pull requests.
+
+License
+This project is licensed under the MIT License.
