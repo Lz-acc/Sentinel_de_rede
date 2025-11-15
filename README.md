@@ -32,23 +32,21 @@ Network Sentinel is a Python and Flask-based application designed to monitor dev
 
 ## Installation & Usage
 1. Clone the repository:
-```bash
+```
 git clone https://github.com/Lz-acc/Sentinel_de_rede.git
+```
 Navigate to the project folder:
-
-bash
-Copiar código
-cd Sentinel_de_cripto
+```
+cd Sentinel_de_rede
+```
 Install dependencies:
-
-bash
-Copiar código
+```
 pip install -r requirements.txt
+```
 Run the Flask app:
-
-bash
-Copiar código
+```
 python app.py
+```
 Open your browser and go to http://127.0.0.1:5000 to access the dashboard.
 
 Contributing
